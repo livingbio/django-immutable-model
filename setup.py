@@ -22,7 +22,7 @@ INSTALL_REQUIRES = (
 
 
 def version():
-    return "0.2"
+    return "0.3"
 
 
 with io.open('README.rst') as readme:

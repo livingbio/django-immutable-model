@@ -23,14 +23,14 @@ def _to_hashable(_obj):
 
 
 class ImmutableModel(models.Model):
-    id = models.BigIntegerField(primary_key=True, editable=False)
+    id = models.CharField(max_length=255, primary_key=True, editable=False)
 
     def to_nametuple(self):
         v = {k: self.__dict__[k] for k in self.__dict__ if k[0] != "_"}
         return _to_hashable(v)
 
     def __hash__(self):
-        return hash(self.to_nametuple())
+        return str(hash(self.to_nametuple()))
 
     def __unicode__(self):
         return u"{}<{}>".format(self.__class__.__name__, self.id)
