@@ -43,7 +43,7 @@ class ImmutableModel(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.pk:
-            self.pk = hash(self)
+            self.pk = self.__hash__()
             try:
                 # don't need to save if the model is exist already
                 self.__class__.objects.get(id=self.pk)
